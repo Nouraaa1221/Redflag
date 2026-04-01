@@ -1,7 +1,5 @@
 # 🛡️ FraudSentinel — Plateforme de Détection de Fraude en Temps Réel
 
-> **Projet portfolio CAC40-level** — Bachelor Informatique  
-> Détection d'anomalies sur des transactions financières via règles métier + Machine Learning.
 
 ---
 
@@ -139,31 +137,3 @@ fraud-detector/
 ```
 
 ---
-
-## 💡 Ce que ce projet démontre (pour le CV)
-
-| Compétence | Implémentation |
-|---|---|
-| Backend Python | FastAPI, JWT, WebSocket, REST API |
-| Machine Learning | IsolationForest, scikit-learn, métriques ML |
-| Data processing | Scoring temps réel, feature engineering |
-| Frontend React | Dashboard live, hooks, composants |
-| Sécurité | JWT, hachage SHA-256, CORS |
-| Monitoring | Prometheus + Grafana (Docker) |
-| DevOps | Dockerisation complète, docker-compose |
-| Architecture | Microservices, WebSocket, REST |
-
----
-
-## 🚀 Pour aller plus loin
-
-- **Kafka** : remplacer le générateur par un vrai stream de données
-- **PostgreSQL** : persister les transactions (actuellement en mémoire)
-- **OAuth2 / 2FA** : renforcer l'authentification
-- **Tests** : pytest pour le backend, Vitest pour le frontend
-- **Déploiement** : Railway (backend) + Vercel (frontend)
-- **SHAP** : expliquabilité des prédictions ML
-
----
-
-*Projet réalisé dans le cadre d'un Bachelor Informatique — Détection de fraude financière.*
