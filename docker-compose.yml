@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: fraudsentinel_api
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=fraudsentinel-secret-2024
+    restart: always
+    labels:
+      - "traefik.enable=false"
+
+  frontend:
+    build: ./frontend
+    container_name: fraudsentinel_ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: fraudsentinel_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: fraudsentinel_grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    depends_on:
+      - prometheus
+    restart: always
