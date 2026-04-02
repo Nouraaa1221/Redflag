@@ -28,7 +28,7 @@ except ImportError:
     print("⚠️  sklearn non installé. Lance : pip install scikit-learn joblib numpy")
 
 
-# ── Génération de données d'entraînement simulées ────────────────────────────
+# ── Génération de données d'entraînement simulées
 
 def generate_training_data(n_samples: int = 10000):
     """
@@ -67,7 +67,7 @@ def generate_training_data(n_samples: int = 10000):
     return X[idx], y[idx]
 
 
-# ── Feature engineering ───────────────────────────────────────────────────────
+
 
 def extract_features(transaction: dict) -> np.ndarray:
     """
@@ -90,7 +90,7 @@ def extract_features(transaction: dict) -> np.ndarray:
     return features
 
 
-# ── Entraînement ──────────────────────────────────────────────────────────────
+# ── Entraînement 
 
 def train_model():
     if not SKLEARN_AVAILABLE:
@@ -151,7 +151,7 @@ def train_model():
     return model, scaler
 
 
-# ── Prédiction ────────────────────────────────────────────────────────────────
+# ── Prédiction ( Note a moi meme : oublie pas de revenir sur ce point)
 
 def predict(transaction: dict, model=None, scaler=None) -> dict:
     """
@@ -187,7 +187,7 @@ def predict(transaction: dict, model=None, scaler=None) -> dict:
     return {"score": score, "level": level, "flags": ["ML_PREDICTION"], "ml_raw": round(raw_score, 4)}
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
+# ── CLI 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="FraudSentinel ML")
