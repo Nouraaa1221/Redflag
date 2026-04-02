@@ -1,12 +1,6 @@
-"""
-ml/model.py — Modèle ML de détection d'anomalies
-==================================================
-Utilise Isolation Forest (sklearn) pour détecter les transactions anormales.
-Peut être branché sur le backend FastAPI via /transaction/analyze.
-
-Entraînement : python model.py --train
-Évaluation   : python model.py --eval
-"""
+# ml/model.py - script pour le scoring des transactions
+# A lancer avec --train pour generer le modele joblib
+# TODO: verifier si on peut ajouter le pays d'origine du compte dans le futur
 
 import argparse
 import numpy as np
