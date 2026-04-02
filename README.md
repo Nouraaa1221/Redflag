@@ -1,5 +1,6 @@
-# 🛡️ Redflag — Plateforme de Détection de Fraude en Temps Réel
+Ce projet a été realisé par une etudiante en deuxieme année de Bachelor Informatiques
 
+# 🛡️ Redflag — Plateforme de Détection de Fraude en Temps Réel
 
 ---
 
