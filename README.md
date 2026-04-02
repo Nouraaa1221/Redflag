@@ -29,20 +29,6 @@
 
 ## 🚀 Lancement rapide
 
-### Option 1 — Docker (recommandé)
-
-```bash
-docker compose up -d
-```
-
-| Service | URL |
-|---|---|
-| Dashboard | http://localhost:3000 |
-| API docs (Swagger) | http://localhost:8000/docs |
-| Grafana | http://localhost:3001 (admin/admin) |
-| Prometheus | http://localhost:9090 |
-
-### Option 2 — Local
 
 ```bash
 # Backend
@@ -135,5 +121,19 @@ fraud-detector/
 ├── docker-compose.yml       # Stack complète
 └── README.md
 ```
+
+---
+
+---
+
+## 🚀 Évolutions prévues
+
+Pour transformer ce prototype en une solution de production industrielle, les axes de développement suivants sont identifiés :
+
+* **Persistance SQL (PostgreSQL) :** Migration du stockage actuel "en mémoire" vers une base de données relationnelle pour assurer l'historisation et la traçabilité des transactions à long terme.
+* **Intégration de Kafka :** Mise en place d'un bus de messages pour gérer l'ingestion de flux de données à très haute fréquence et passer d'un simulateur à un flux de production réel.
+* **Reporting de Conformité :** Génération automatique de rapports périodiques résumant les alertes critiques et les statistiques d'anomalies par zone géographique.
+* **Audit Trail & Logs :** Journalisation immuable de toutes les actions d'administration et des modifications de seuils de scoring pour répondre aux exigences de sécurité bancaire.
+* **Authentification Multi-Facteurs (MFA) :** Renforcement de la sécurité des accès au dashboard pour les profils "Analyste" et "Administrateur".
 
 ---
