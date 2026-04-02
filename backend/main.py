@@ -47,7 +47,7 @@ USERS = {
     "analyst": hashlib.sha256("analyst123".encode()).hexdigest(),
 }
 
-# ── Modèles Pydantic ──────────────────────────────────────────────────────────
+# ── Modèles Pydantic 
 class LoginRequest(BaseModel):
     username: str
     password: str
@@ -84,7 +84,7 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
         raise HTTPException(status_code=401, detail="Token invalide")
 
 
-# ── Moteur de scoring d'anomalie ──────────────────────────────────────────────
+# ── Moteur de scoring d'anomalie 
 def compute_risk_score(tx: dict) -> dict:
     """
     Calcule un score de risque de 0 à 100 basé sur des règles métier.
@@ -135,7 +135,7 @@ def compute_risk_score(tx: dict) -> dict:
     return {"score": score, "level": level, "flags": flags}
 
 
-# ── Générateur de transactions simulées ───────────────────────────────────────
+# ── Générateur de transactions simulées 
 def generate_transaction(force_anomaly: bool = False) -> dict:
     merchants = ["Amazon", "Carrefour", "SNCF", "Apple", "Zara", "Fnac", "PayPal", "Binance"]
     countries = ["FR", "US", "DE", "GB", "ES", "IT", "RU", "CN", "NG"]
@@ -168,7 +168,7 @@ def generate_transaction(force_anomaly: bool = False) -> dict:
     return tx
 
 
-# ── WebSocket broadcast ───────────────────────────────────────────────────────
+# ── WebSocket broadcast 
 async def broadcast(data: dict):
     disconnected = []
     for ws in connected_clients:
@@ -180,7 +180,7 @@ async def broadcast(data: dict):
         connected_clients.remove(ws)
 
 
-# ── Routes ────────────────────────────────────────────────────────────────────
+# ── Routes 
 
 @app.post("/auth/login")
 def login(req: LoginRequest):
@@ -280,7 +280,7 @@ def get_model_metrics(user=Depends(verify_token)):
     }
 
 
-# ── WebSocket temps réel ──────────────────────────────────────────────────────
+# ── WebSocket temps réel ( revenir dessus plus tard )
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
     await ws.accept()
