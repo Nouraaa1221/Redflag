@@ -1,6 +1,5 @@
 """
-FraudSentinel — Backend API (FastAPI)
-======================================
+Redflag — 
 Détection d'anomalies en temps réel sur des transactions financières.
 """
 
@@ -47,7 +46,7 @@ USERS = {
     "analyst": hashlib.sha256("analyst123".encode()).hexdigest(),
 }
 
-# ── Modèles Pydantic 
+# ── Modèles Pydantic ( ! a revenir dessus apres )
 class LoginRequest(BaseModel):
     username: str
     password: str
@@ -84,11 +83,10 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
         raise HTTPException(status_code=401, detail="Token invalide")
 
 
-# ── Moteur de scoring d'anomalie 
+# ── Moteur de scoring d'anomalie ( important!!)
 def compute_risk_score(tx: dict) -> dict:
     """
-    Calcule un score de risque de 0 à 100 basé sur des règles métier.
-    En production : remplacer par le modèle ML (voir ml/model.py).
+    Effer attendu : Calcule un score de risque de 0 à 100 basé sur des règles métier.
     """
     score = 0
     flags = []
@@ -118,7 +116,7 @@ def compute_risk_score(tx: dict) -> dict:
         score += 10
         flags.append("LARGE_TRANSFER")
 
-    # Règle 5 : mode attaque injecte du bruit
+    # Règle 5 : mode attaque injecte du bruit ( reussitt !! ) 
     if attack_mode_active:
         score += random.randint(20, 40)
         flags.append("ATTACK_SIMULATION")
