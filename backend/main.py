@@ -19,7 +19,7 @@ import hashlib
 from datetime import datetime, timedelta
 from collections import deque
 
-# ── Config ────────────────────────────────────────────────────────────────────
+
 SECRET_KEY = "fraudsentinel-secret-2024"
 ALGORITHM = "HS256"
 
@@ -35,13 +35,13 @@ app.add_middleware(
 
 security = HTTPBearer()
 
-# ── In-memory state (remplace par PostgreSQL en prod) ─────────────────────────
+
 transactions_history: deque = deque(maxlen=500)
 anomalies_log: list = []
 connected_clients: list = []
 attack_mode_active: bool = False
 
-# Utilisateurs demo
+
 USERS = {
     "admin": hashlib.sha256("admin123".encode()).hexdigest(),
     "analyst": hashlib.sha256("analyst123".encode()).hexdigest(),
@@ -65,7 +65,7 @@ class AttackRequest(BaseModel):
     intensity: int = 5  # 1-10
 
 
-# ── Auth ──────────────────────────────────────────────────────────────────────
+
 def create_token(username: str) -> str:
     payload = {
         "sub": username,
